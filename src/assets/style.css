@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* 选中文字样式 */
+::selection {
+  background: #c7d2fe;
+  color: #3730a3;
+}
+
+/* 移动端优化 */
+@supports (-webkit-touch-callout: none) {
+  .editor-container,
+  .list-container {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* 防止 iOS 上的双击缩放 */
+button,
+input,
+textarea {
+  touch-action: manipulation;
+}
+
+/* 输入框焦点样式 */
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* 平滑滚动 */
+html {
+  scroll-behavior: smooth;
+}
