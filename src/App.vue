@@ -11,7 +11,7 @@
         @import="handleImport"
       />
       
-      <!-- 编辑器视图 -->
+      <!-- 编辑器视�?-->
       <Editor
         v-else-if="currentView === 'editor'"
         :diary="editingDiary"
@@ -26,6 +26,9 @@
         {{ toast.message }}
       </div>
     </transition>
+
+    <!-- PWA 安装提示 -->
+    <PWAInstall />
   </div>
 </template>
 
@@ -35,6 +38,7 @@ import { db, type Diary } from './utils/db'
 import { imageStore } from './utils/imageStore'
 import DiaryList from './components/DiaryList.vue'
 import Editor from './components/Editor.vue'
+import PWAInstall from './components/PWAInstall.vue'
 
 type ViewType = 'list' | 'editor'
 
@@ -48,7 +52,7 @@ const toast = ref({
   type: 'success' as 'success' | 'error'
 })
 
-// 初始化数据库并加载日记
+// 初始化数据库并加载日�?
 onMounted(async () => {
   try {
     await db.init()
@@ -115,7 +119,7 @@ async function deleteDiary(id: string) {
   try {
     // 先删除关联的图片
     await imageStore.deleteImagesByDiary(id)
-    // 再删除日记
+    // 再删除日�?
     await db.delete(id)
     await loadDiaries()
     showToast('删除成功', 'success')
@@ -125,7 +129,7 @@ async function deleteDiary(id: string) {
   }
 }
 
-// 处理导入的日记
+// 处理导入的日�?
 async function handleImport(importedDiaries: Diary[]) {
   try {
     for (const diary of importedDiaries) {
