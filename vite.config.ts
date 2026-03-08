@@ -65,7 +65,10 @@ export default defineConfig({
       devOptions: {
         enabled: true,
         type: 'module'
-      }
+      },
+      // 确保每次都生成新的 SW 文件名，强制更新
+      filename: 'sw.js',
+      strategies: 'generateSW'
     })
   ]
 })
