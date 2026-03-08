@@ -128,9 +128,19 @@ npm run preview
 
 ## 📦 部署
 
-### 静态托管
+### GitHub Pages（推荐）
+本项目已配置 GitHub Actions 自动部署到 GitHub Pages：
+
+1. 在仓库设置中启用 GitHub Pages
+   - 进入 Settings → Pages
+   - Source 选择 "GitHub Actions"
+
+2. 每次 push 到 main 分支会自动触发部署
+
+3. 访问地址：`https://zhangyu-521.github.io/dialy_pwa/`
+
+### 手动部署到其他平台
 将 `dist/` 目录部署到任何静态托管服务：
-- GitHub Pages
 - Vercel
 - Netlify
 - Cloudflare Pages

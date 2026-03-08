@@ -3,6 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  // GitHub Pages 部署配置
+  base: '/dialy_pwa/',
   plugins: [
     vue(),
     VitePWA({
@@ -15,21 +17,21 @@ export default defineConfig({
         theme_color: '#6366f1',
         background_color: '#ffffff',
         display: 'standalone',
-        scope: '/',
-        start_url: '/',
+        scope: '/dialy_pwa/',
+        start_url: '/dialy_pwa/',
         orientation: 'portrait',
         categories: ['productivity', 'lifestyle'],
         lang: 'zh-CN',
         dir: 'ltr',
         icons: [
           {
-            src: '/icon-192x192.png',
+            src: 'icon-192x192.png',
             sizes: '192x192',
             type: 'image/png',
             purpose: 'any maskable'
           },
           {
-            src: '/icon-512x512.png',
+            src: 'icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any maskable'
@@ -37,7 +39,7 @@ export default defineConfig({
         ],
         screenshots: [
           {
-            src: '/screenshot1.png',
+            src: 'screenshot1.png',
             sizes: '750x1334',
             type: 'image/png',
             form_factor: 'narrow'
