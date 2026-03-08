@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) navigator.serviceWorker.register('/dialy_pwa/dev-sw.js?dev-sw', { scope: '/dialy_pwa/', type: 'classic' })
