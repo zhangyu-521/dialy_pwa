@@ -7,6 +7,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: 'auto',
       manifest: {
         name: '日记本',
         short_name: '日记',
@@ -16,21 +17,52 @@ export default defineConfig({
         display: 'standalone',
         scope: '/',
         start_url: '/',
+        orientation: 'portrait',
+        categories: ['productivity', 'lifestyle'],
+        lang: 'zh-CN',
+        dir: 'ltr',
         icons: [
           {
             src: '/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
           },
           {
             src: '/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
+            type: 'image/png',
+            purpose: 'any maskable'
+          }
+        ],
+        screenshots: [
+          {
+            src: '/screenshot1.png',
+            sizes: '750x1334',
+            type: 'image/png',
+            form_factor: 'narrow'
           }
         ]
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,txt}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/.*/i,
+            handler: 'NetworkFirst',
+            options: {
+              cacheName: 'cross-origin',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 7 // 7 days
+              }
+            }
+          }
+        ]
+      },
+      devOptions: {
+        enabled: true,
+        type: 'module'
       }
     })
   ]
