@@ -23,11 +23,25 @@
             <polyline points="21 15 16 10 5 21"/>
           </svg>
         </button>
+        <button class="btn-icon" @click="triggerCamera" title="拍照">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+            <circle cx="12" cy="13" r="4"/>
+          </svg>
+        </button>
         <input
           ref="fileInput"
           type="file"
           accept="image/*"
           multiple
+          style="display: none"
+          @change="handleFileSelect"
+        />
+        <input
+          ref="cameraInput"
+          type="file"
+          accept="image/*"
+          capture="environment"
           style="display: none"
           @change="handleFileSelect"
         />
@@ -148,6 +162,7 @@ const tagInput = ref('')
 const showTagInput = ref(false)
 const contentRef = ref<HTMLTextAreaElement>()
 const fileInput = ref<HTMLInputElement>()
+const cameraInput = ref<HTMLInputElement>()
 const previewUrl = ref<string | null>(null)
 const deletedImageIds = ref<string[]>([]) // 记录被删除的图片 ID
 
@@ -202,6 +217,11 @@ function removeTag(tag: string) {
 // 触发文件选择
 function triggerImageUpload() {
   fileInput.value?.click()
+}
+
+// 触发相机拍照
+function triggerCamera() {
+  cameraInput.value?.click()
 }
 
 // 处理文件选择
